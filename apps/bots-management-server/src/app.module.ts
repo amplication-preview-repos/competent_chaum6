@@ -8,6 +8,7 @@ import { UserModule } from "./user/user.module";
 import { SubscriptionModule } from "./subscription/subscription.module";
 import { InvoiceModule } from "./invoice/invoice.module";
 import { PaymentIntentModule } from "./paymentIntent/paymentIntent.module";
+import { SubscriptionManagementModule } from "./SubscriptionManagement/subscriptionmanagement.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -36,6 +37,7 @@ import { AuthModule } from "./auth/auth.module";
     SubscriptionModule,
     InvoiceModule,
     PaymentIntentModule,
+    SubscriptionManagementModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
