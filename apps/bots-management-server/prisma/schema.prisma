@@ -19,14 +19,15 @@ model Bot {
 }
 
 model SubscriptionPlan {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String?
-  price     Float?
-  features  String?
-  user      User?    @relation(fields: [userId], references: [id])
-  userId    String?
+  id            String         @id @default(cuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  name          String?
+  price         Float?
+  features      String?
+  user          User?          @relation(fields: [userId], references: [id])
+  userId        String?
+  subscriptions Subscription[]
 }
 
 model Payment {
@@ -74,6 +75,45 @@ model User {
   subscriptionPlans SubscriptionPlan[]
   customers         Customer[]
   bots              Bot[]
+  subscriptions     Subscription[]
+}
+
+model Subscription {
+  id                   String                  @id @default(cuid())
+  createdAt            DateTime                @default(now())
+  updatedAt            DateTime                @updatedAt
+  status               EnumSubscriptionStatus?
+  startDate            DateTime?
+  endDate              DateTime?
+  stripeSubscriptionId String?
+  subscriptionPlan     SubscriptionPlan?       @relation(fields: [subscriptionPlanId], references: [id])
+  subscriptionPlanId   String?
+  user                 User?                   @relation(fields: [userId], references: [id])
+  userId               String?
+  invoices             Invoice[]
+}
+
+model Invoice {
+  id              String             @id @default(cuid())
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  amountDue       Float?
+  status          EnumInvoiceStatus?
+  stripeInvoiceId String?
+  subscription    Subscription?      @relation(fields: [subscriptionId], references: [id])
+  subscriptionId  String?
+  paymentIntents  PaymentIntent[]
+}
+
+model PaymentIntent {
+  id                    String                   @id @default(cuid())
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+  status                EnumPaymentIntentStatus?
+  amount                Float?
+  stripePaymentIntentId String?
+  invoice               Invoice?                 @relation(fields: [invoiceId], references: [id])
+  invoiceId             String?
 }
 
 enum EnumBotPlatform {
@@ -85,5 +125,17 @@ enum EnumPaymentPaymentMethod {
 }
 
 enum EnumMediaTypeField {
+  Option1
+}
+
+enum EnumSubscriptionStatus {
+  Option1
+}
+
+enum EnumInvoiceStatus {
+  Option1
+}
+
+enum EnumPaymentIntentStatus {
   Option1
 }

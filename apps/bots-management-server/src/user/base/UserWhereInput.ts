@@ -19,6 +19,7 @@ import { PaymentListRelationFilter } from "../../payment/base/PaymentListRelatio
 import { SubscriptionPlanListRelationFilter } from "../../subscriptionPlan/base/SubscriptionPlanListRelationFilter";
 import { CustomerListRelationFilter } from "../../customer/base/CustomerListRelationFilter";
 import { BotListRelationFilter } from "../../bot/base/BotListRelationFilter";
+import { SubscriptionListRelationFilter } from "../../subscription/base/SubscriptionListRelationFilter";
 
 @InputType()
 class UserWhereInput {
@@ -124,6 +125,18 @@ class UserWhereInput {
     nullable: true,
   })
   bots?: BotListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => SubscriptionListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => SubscriptionListRelationFilter)
+  @IsOptional()
+  @Field(() => SubscriptionListRelationFilter, {
+    nullable: true,
+  })
+  subscriptions?: SubscriptionListRelationFilter;
 }
 
 export { UserWhereInput as UserWhereInput };

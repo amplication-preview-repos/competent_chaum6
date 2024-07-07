@@ -29,6 +29,18 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
+import { SubscriptionList } from "./subscription/SubscriptionList";
+import { SubscriptionCreate } from "./subscription/SubscriptionCreate";
+import { SubscriptionEdit } from "./subscription/SubscriptionEdit";
+import { SubscriptionShow } from "./subscription/SubscriptionShow";
+import { InvoiceList } from "./invoice/InvoiceList";
+import { InvoiceCreate } from "./invoice/InvoiceCreate";
+import { InvoiceEdit } from "./invoice/InvoiceEdit";
+import { InvoiceShow } from "./invoice/InvoiceShow";
+import { PaymentIntentList } from "./paymentIntent/PaymentIntentList";
+import { PaymentIntentCreate } from "./paymentIntent/PaymentIntentCreate";
+import { PaymentIntentEdit } from "./paymentIntent/PaymentIntentEdit";
+import { PaymentIntentShow } from "./paymentIntent/PaymentIntentShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -96,6 +108,27 @@ const App = (): React.ReactElement => {
           edit={UserEdit}
           create={UserCreate}
           show={UserShow}
+        />
+        <Resource
+          name="Subscription"
+          list={SubscriptionList}
+          edit={SubscriptionEdit}
+          create={SubscriptionCreate}
+          show={SubscriptionShow}
+        />
+        <Resource
+          name="Invoice"
+          list={InvoiceList}
+          edit={InvoiceEdit}
+          create={InvoiceCreate}
+          show={InvoiceShow}
+        />
+        <Resource
+          name="PaymentIntent"
+          list={PaymentIntentList}
+          edit={PaymentIntentEdit}
+          create={PaymentIntentCreate}
+          show={PaymentIntentShow}
         />
       </Admin>
     </div>

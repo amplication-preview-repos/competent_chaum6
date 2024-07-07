@@ -10,9 +10,11 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
+
 import {
   Prisma,
   SubscriptionPlan as PrismaSubscriptionPlan,
+  Subscription as PrismaSubscription,
   User as PrismaUser,
 } from "@prisma/client";
 
@@ -49,6 +51,17 @@ export class SubscriptionPlanServiceBase {
     args: Prisma.SubscriptionPlanDeleteArgs
   ): Promise<PrismaSubscriptionPlan> {
     return this.prisma.subscriptionPlan.delete(args);
+  }
+
+  async findSubscriptions(
+    parentId: string,
+    args: Prisma.SubscriptionFindManyArgs
+  ): Promise<PrismaSubscription[]> {
+    return this.prisma.subscriptionPlan
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .subscriptions(args);
   }
 
   async getUser(parentId: string): Promise<PrismaUser | null> {

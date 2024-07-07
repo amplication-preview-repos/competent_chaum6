@@ -17,6 +17,7 @@ import { IsOptional, ValidateNested } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { SubscriptionListRelationFilter } from "../../subscription/base/SubscriptionListRelationFilter";
 
 @InputType()
 class SubscriptionPlanWhereInput {
@@ -75,6 +76,18 @@ class SubscriptionPlanWhereInput {
     nullable: true,
   })
   user?: UserWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => SubscriptionListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => SubscriptionListRelationFilter)
+  @IsOptional()
+  @Field(() => SubscriptionListRelationFilter, {
+    nullable: true,
+  })
+  subscriptions?: SubscriptionListRelationFilter;
 }
 
 export { SubscriptionPlanWhereInput as SubscriptionPlanWhereInput };

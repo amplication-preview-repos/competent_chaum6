@@ -3,6 +3,7 @@ import { PaymentCreateNestedManyWithoutUsersInput } from "./PaymentCreateNestedM
 import { SubscriptionPlanCreateNestedManyWithoutUsersInput } from "./SubscriptionPlanCreateNestedManyWithoutUsersInput";
 import { CustomerCreateNestedManyWithoutUsersInput } from "./CustomerCreateNestedManyWithoutUsersInput";
 import { BotCreateNestedManyWithoutUsersInput } from "./BotCreateNestedManyWithoutUsersInput";
+import { SubscriptionCreateNestedManyWithoutUsersInput } from "./SubscriptionCreateNestedManyWithoutUsersInput";
 
 export type UserCreateInput = {
   firstName?: string | null;
@@ -15,4 +16,5 @@ export type UserCreateInput = {
   subscriptionPlans?: SubscriptionPlanCreateNestedManyWithoutUsersInput;
   customers?: CustomerCreateNestedManyWithoutUsersInput;
   bots?: BotCreateNestedManyWithoutUsersInput;
+  subscriptions?: SubscriptionCreateNestedManyWithoutUsersInput;
 };

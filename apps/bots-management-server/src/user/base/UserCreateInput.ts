@@ -25,6 +25,7 @@ import { Type } from "class-transformer";
 import { SubscriptionPlanCreateNestedManyWithoutUsersInput } from "./SubscriptionPlanCreateNestedManyWithoutUsersInput";
 import { CustomerCreateNestedManyWithoutUsersInput } from "./CustomerCreateNestedManyWithoutUsersInput";
 import { BotCreateNestedManyWithoutUsersInput } from "./BotCreateNestedManyWithoutUsersInput";
+import { SubscriptionCreateNestedManyWithoutUsersInput } from "./SubscriptionCreateNestedManyWithoutUsersInput";
 
 @InputType()
 class UserCreateInput {
@@ -133,6 +134,18 @@ class UserCreateInput {
     nullable: true,
   })
   bots?: BotCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => SubscriptionCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => SubscriptionCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => SubscriptionCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  subscriptions?: SubscriptionCreateNestedManyWithoutUsersInput;
 }
 
 export { UserCreateInput as UserCreateInput };

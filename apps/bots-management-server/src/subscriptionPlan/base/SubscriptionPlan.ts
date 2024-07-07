@@ -25,6 +25,7 @@ import {
 
 import { Type } from "class-transformer";
 import { User } from "../../user/base/User";
+import { Subscription } from "../../subscription/base/Subscription";
 
 @ObjectType()
 class SubscriptionPlan {
@@ -97,6 +98,15 @@ class SubscriptionPlan {
   @Type(() => User)
   @IsOptional()
   user?: User | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Subscription],
+  })
+  @ValidateNested()
+  @Type(() => Subscription)
+  @IsOptional()
+  subscriptions?: Array<Subscription>;
 }
 
 export { SubscriptionPlan as SubscriptionPlan };

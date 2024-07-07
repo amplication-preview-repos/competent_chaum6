@@ -5,6 +5,9 @@ import { PaymentModule } from "./payment/payment.module";
 import { CustomerModule } from "./customer/customer.module";
 import { MediaModule } from "./media/media.module";
 import { UserModule } from "./user/user.module";
+import { SubscriptionModule } from "./subscription/subscription.module";
+import { InvoiceModule } from "./invoice/invoice.module";
+import { PaymentIntentModule } from "./paymentIntent/paymentIntent.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -30,6 +33,9 @@ import { AuthModule } from "./auth/auth.module";
     CustomerModule,
     MediaModule,
     UserModule,
+    SubscriptionModule,
+    InvoiceModule,
+    PaymentIntentModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

@@ -14,6 +14,7 @@ import { PaymentTitle } from "../payment/PaymentTitle";
 import { SubscriptionPlanTitle } from "../subscriptionPlan/SubscriptionPlanTitle";
 import { CustomerTitle } from "../customer/CustomerTitle";
 import { BotTitle } from "../bot/BotTitle";
+import { SubscriptionTitle } from "../subscription/SubscriptionTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
 
 export const UserCreate = (props: CreateProps): React.ReactElement => {
@@ -62,6 +63,14 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           format={(value: any) => value && value.map((v: any) => v.id)}
         >
           <SelectArrayInput optionText={BotTitle} />
+        </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="subscriptions"
+          reference="Subscription"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={SubscriptionTitle} />
         </ReferenceArrayInput>
       </SimpleForm>
     </Create>

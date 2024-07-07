@@ -25,6 +25,7 @@ import { Type } from "class-transformer";
 import { SubscriptionPlanUpdateManyWithoutUsersInput } from "./SubscriptionPlanUpdateManyWithoutUsersInput";
 import { CustomerUpdateManyWithoutUsersInput } from "./CustomerUpdateManyWithoutUsersInput";
 import { BotUpdateManyWithoutUsersInput } from "./BotUpdateManyWithoutUsersInput";
+import { SubscriptionUpdateManyWithoutUsersInput } from "./SubscriptionUpdateManyWithoutUsersInput";
 
 @InputType()
 class UserUpdateInput {
@@ -142,6 +143,18 @@ class UserUpdateInput {
     nullable: true,
   })
   bots?: BotUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => SubscriptionUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => SubscriptionUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => SubscriptionUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  subscriptions?: SubscriptionUpdateManyWithoutUsersInput;
 }
 
 export { UserUpdateInput as UserUpdateInput };

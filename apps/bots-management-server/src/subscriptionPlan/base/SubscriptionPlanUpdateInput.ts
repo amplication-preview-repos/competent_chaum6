@@ -22,6 +22,7 @@ import {
 } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
+import { SubscriptionUpdateManyWithoutSubscriptionPlansInput } from "./SubscriptionUpdateManyWithoutSubscriptionPlansInput";
 
 @InputType()
 class SubscriptionPlanUpdateInput {
@@ -73,6 +74,18 @@ class SubscriptionPlanUpdateInput {
     nullable: true,
   })
   user?: UserWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => SubscriptionUpdateManyWithoutSubscriptionPlansInput,
+  })
+  @ValidateNested()
+  @Type(() => SubscriptionUpdateManyWithoutSubscriptionPlansInput)
+  @IsOptional()
+  @Field(() => SubscriptionUpdateManyWithoutSubscriptionPlansInput, {
+    nullable: true,
+  })
+  subscriptions?: SubscriptionUpdateManyWithoutSubscriptionPlansInput;
 }
 
 export { SubscriptionPlanUpdateInput as SubscriptionPlanUpdateInput };

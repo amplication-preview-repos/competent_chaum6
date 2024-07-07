@@ -26,6 +26,7 @@ import { Payment } from "../../payment/base/Payment";
 import { SubscriptionPlan } from "../../subscriptionPlan/base/SubscriptionPlan";
 import { Customer } from "../../customer/base/Customer";
 import { Bot } from "../../bot/base/Bot";
+import { Subscription } from "../../subscription/base/Subscription";
 
 @ObjectType()
 class User {
@@ -138,6 +139,15 @@ class User {
   @Type(() => Bot)
   @IsOptional()
   bots?: Array<Bot>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Subscription],
+  })
+  @ValidateNested()
+  @Type(() => Subscription)
+  @IsOptional()
+  subscriptions?: Array<Subscription>;
 }
 
 export { User as User };

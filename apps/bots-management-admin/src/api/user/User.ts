@@ -3,6 +3,7 @@ import { Payment } from "../payment/Payment";
 import { SubscriptionPlan } from "../subscriptionPlan/SubscriptionPlan";
 import { Customer } from "../customer/Customer";
 import { Bot } from "../bot/Bot";
+import { Subscription } from "../subscription/Subscription";
 
 export type User = {
   id: string;
@@ -17,4 +18,5 @@ export type User = {
   subscriptionPlans?: Array<SubscriptionPlan>;
   customers?: Array<Customer>;
   bots?: Array<Bot>;
+  subscriptions?: Array<Subscription>;
 };

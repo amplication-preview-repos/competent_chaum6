@@ -22,6 +22,7 @@ import {
 } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
+import { SubscriptionCreateNestedManyWithoutSubscriptionPlansInput } from "./SubscriptionCreateNestedManyWithoutSubscriptionPlansInput";
 
 @InputType()
 class SubscriptionPlanCreateInput {
@@ -73,6 +74,18 @@ class SubscriptionPlanCreateInput {
     nullable: true,
   })
   user?: UserWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => SubscriptionCreateNestedManyWithoutSubscriptionPlansInput,
+  })
+  @ValidateNested()
+  @Type(() => SubscriptionCreateNestedManyWithoutSubscriptionPlansInput)
+  @IsOptional()
+  @Field(() => SubscriptionCreateNestedManyWithoutSubscriptionPlansInput, {
+    nullable: true,
+  })
+  subscriptions?: SubscriptionCreateNestedManyWithoutSubscriptionPlansInput;
 }
 
 export { SubscriptionPlanCreateInput as SubscriptionPlanCreateInput };

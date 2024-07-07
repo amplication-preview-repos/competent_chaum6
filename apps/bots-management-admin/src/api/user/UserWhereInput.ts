@@ -4,6 +4,7 @@ import { PaymentListRelationFilter } from "../payment/PaymentListRelationFilter"
 import { SubscriptionPlanListRelationFilter } from "../subscriptionPlan/SubscriptionPlanListRelationFilter";
 import { CustomerListRelationFilter } from "../customer/CustomerListRelationFilter";
 import { BotListRelationFilter } from "../bot/BotListRelationFilter";
+import { SubscriptionListRelationFilter } from "../subscription/SubscriptionListRelationFilter";
 
 export type UserWhereInput = {
   id?: StringFilter;
@@ -15,4 +16,5 @@ export type UserWhereInput = {
   subscriptionPlans?: SubscriptionPlanListRelationFilter;
   customers?: CustomerListRelationFilter;
   bots?: BotListRelationFilter;
+  subscriptions?: SubscriptionListRelationFilter;
 };

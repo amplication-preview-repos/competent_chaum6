@@ -3,6 +3,7 @@ import { PaymentUpdateManyWithoutUsersInput } from "./PaymentUpdateManyWithoutUs
 import { SubscriptionPlanUpdateManyWithoutUsersInput } from "./SubscriptionPlanUpdateManyWithoutUsersInput";
 import { CustomerUpdateManyWithoutUsersInput } from "./CustomerUpdateManyWithoutUsersInput";
 import { BotUpdateManyWithoutUsersInput } from "./BotUpdateManyWithoutUsersInput";
+import { SubscriptionUpdateManyWithoutUsersInput } from "./SubscriptionUpdateManyWithoutUsersInput";
 
 export type UserUpdateInput = {
   firstName?: string | null;
@@ -15,4 +16,5 @@ export type UserUpdateInput = {
   subscriptionPlans?: SubscriptionPlanUpdateManyWithoutUsersInput;
   customers?: CustomerUpdateManyWithoutUsersInput;
   bots?: BotUpdateManyWithoutUsersInput;
+  subscriptions?: SubscriptionUpdateManyWithoutUsersInput;
 };

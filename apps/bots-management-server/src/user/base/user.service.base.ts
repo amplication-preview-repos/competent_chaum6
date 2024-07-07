@@ -18,6 +18,7 @@ import {
   SubscriptionPlan as PrismaSubscriptionPlan,
   Customer as PrismaCustomer,
   Bot as PrismaBot,
+  Subscription as PrismaSubscription,
 } from "@prisma/client";
 
 import { PasswordService } from "../../auth/password.service";
@@ -111,5 +112,16 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .bots(args);
+  }
+
+  async findSubscriptions(
+    parentId: string,
+    args: Prisma.SubscriptionFindManyArgs
+  ): Promise<PrismaSubscription[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .subscriptions(args);
   }
 }

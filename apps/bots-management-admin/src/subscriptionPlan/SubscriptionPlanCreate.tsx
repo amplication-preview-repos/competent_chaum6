@@ -8,9 +8,12 @@ import {
   NumberInput,
   ReferenceInput,
   SelectInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
 } from "react-admin";
 
 import { UserTitle } from "../user/UserTitle";
+import { SubscriptionTitle } from "../subscription/SubscriptionTitle";
 
 export const SubscriptionPlanCreate = (
   props: CreateProps
@@ -24,6 +27,14 @@ export const SubscriptionPlanCreate = (
         <ReferenceInput source="user.id" reference="User" label="User">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
+        <ReferenceArrayInput
+          source="subscriptions"
+          reference="Subscription"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={SubscriptionTitle} />
+        </ReferenceArrayInput>
       </SimpleForm>
     </Create>
   );
